@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/screens/home_screen.dart';
+import '../../features/quiz/screens/quiz_play_screen.dart';
 import '../../features/splash/onboard_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
@@ -18,6 +19,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/quiz',
+      builder: (context, state) => const QuizPlayScreen(),
     ),
   ],
 );

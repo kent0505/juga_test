@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'src/core/db/db.dart';
 import 'src/core/utils.dart';
 import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
@@ -11,7 +10,6 @@ import 'src/core/others/internet/bloc/internet_bloc.dart';
 import 'src/features/home/bloc/home_bloc.dart';
 
 void main() async {
-  await initHive();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

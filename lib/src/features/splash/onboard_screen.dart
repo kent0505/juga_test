@@ -33,9 +33,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   void onNext() async {
     if (index == 3) {
       await saveOnboard().then((value) {
-        if (mounted) {
-          context.go('/home');
-        }
+        if (mounted) context.go('/home');
       });
     } else {
       setState(() {
