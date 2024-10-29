@@ -80,7 +80,7 @@ class _SettingsTile extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 30),
-          SvgPicture.asset('assets/settings$id.svg'),
+          SvgPicture.asset('assets/settings/settings$id.svg'),
           const SizedBox(width: 10),
           TextB(
             title,

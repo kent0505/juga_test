@@ -27,7 +27,7 @@ class CustomScaffold extends StatelessWidget {
           if (id != null)
             Center(
               child: SvgPicture.asset(
-                'assets/bg$id.svg',
+                'assets/bg/bg$id.svg',
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

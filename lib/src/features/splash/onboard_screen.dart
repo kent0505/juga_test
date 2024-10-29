@@ -56,7 +56,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
           child: Column(
             children: [
               const Spacer(),
-              SvgPicture.asset('assets/onboard$index.svg'),
+              SvgPicture.asset('assets/onboard/onboard$index.svg'),
               const Spacer(),
               TextB(
                 getTitle(),

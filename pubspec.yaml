@@ -29,6 +29,11 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/bg/
+    - assets/onboard/
+    - assets/quiz/
+    - assets/settings/
+    - assets/tab/
   fonts:
     # SFProText
     - family: SFR
