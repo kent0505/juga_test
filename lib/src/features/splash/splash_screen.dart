@@ -26,8 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
           if (onboard) {
-            // context.go('/onboard');
-            context.go('/home');
+            context.go('/onboard');
           } else {
             context.go('/home');
           }
@@ -50,21 +49,21 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Center(
             child: Container(
-              height: 11,
-              width: 270,
+              height: 8,
+              width: 100,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(23),
+                borderRadius: BorderRadius.circular(8),
                 color: AppColors.white50,
               ),
               child: Row(
                 children: [
                   AnimatedContainer(
                     duration: const Duration(seconds: 2),
-                    height: 11,
-                    width: loading ? 270 : 0,
+                    height: 8,
+                    width: loading ? 100 : 0,
                     decoration: BoxDecoration(
-                      color: AppColors.main,
-                      borderRadius: BorderRadius.circular(19),
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],

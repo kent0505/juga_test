@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../config/app_colors.dart';
 
@@ -7,10 +8,12 @@ class CustomScaffold extends StatelessWidget {
     super.key,
     required this.body,
     this.settings = false,
+    this.id,
   });
 
   final Widget body;
   final bool settings;
+  final int? id;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +22,16 @@ class CustomScaffold extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: settings ? const Color(0xff003A79) : AppColors.main,
-              // gradient: LinearGradient(
-              //   begin: Alignment.topCenter,
-              //   end: Alignment.bottomCenter,
-              //   colors: [
-              //     Color(0xff072434),
-              //     Color(0xff0D0819),
-              //   ],
-              // ),
-            ),
+            color: settings ? const Color(0xff003A79) : AppColors.main,
           ),
+          if (id != null)
+            Center(
+              child: SvgPicture.asset(
+                'assets/bg$id.svg',
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
           body,
         ],
       ),

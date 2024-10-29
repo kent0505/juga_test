@@ -20,11 +20,11 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 48,
       width: width,
       decoration: BoxDecoration(
-        color: AppColors.main,
-        borderRadius: BorderRadius.circular(8),
+        color: AppColors.green,
+        borderRadius: BorderRadius.circular(12),
       ),
       child: CupertinoButton(
         onPressed: active ? onPressed : null,
@@ -32,7 +32,8 @@ class PrimaryButton extends StatelessWidget {
         child: Center(
           child: TextM(
             title,
-            fontSize: 16,
+            fontSize: 22,
+            fontFamily: Fonts.montserratB,
             color: active ? AppColors.white : AppColors.white50,
           ),
         ),

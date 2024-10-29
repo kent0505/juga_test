@@ -9,6 +9,7 @@ class AppColors {
   static Color black40 = black.withOpacity(0.4);
   static Color black50 = black.withOpacity(0.5);
   static Color white30 = white.withOpacity(0.3);
+  static Color white40 = white.withOpacity(0.4);
   static Color white50 = white.withOpacity(0.5);
 }
 
