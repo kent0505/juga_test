@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import '../config/app_colors.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({super.key, required this.body});
+  const CustomScaffold({
+    super.key,
+    required this.body,
+    this.settings = false,
+  });
 
   final Widget body;
+  final bool settings;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +19,8 @@ class CustomScaffold extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: AppColors.main,
+            decoration: BoxDecoration(
+              color: settings ? const Color(0xff003A79) : AppColors.main,
               // gradient: LinearGradient(
               //   begin: Alignment.topCenter,
               //   end: Alignment.bottomCenter,

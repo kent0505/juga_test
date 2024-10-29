@@ -4,14 +4,14 @@ import 'package:go_router/go_router.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
 
-class OnboardPage extends StatefulWidget {
-  const OnboardPage({super.key});
+class OnboardScreen extends StatefulWidget {
+  const OnboardScreen({super.key});
 
   @override
-  State<OnboardPage> createState() => _OnboardPageState();
+  State<OnboardScreen> createState() => _OnboardScreenState();
 }
 
-class _OnboardPageState extends State<OnboardPage> {
+class _OnboardScreenState extends State<OnboardScreen> {
   void goHome() async {
     await saveOnboard().then((value) {
       if (mounted) {

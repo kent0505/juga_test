@@ -5,14 +5,14 @@ import '../../core/config/app_colors.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashScreenState extends State<SplashScreen> {
   bool loading = false;
 
   void load() async {

@@ -40,6 +40,9 @@ flutter:
     - family: SFB
       fonts:
         - asset: assets/fonts/SFProText-Bold.ttf
+    - family: SFH
+      fonts:
+        - asset: assets/fonts/SFProText-Heavy.ttf
     # Montserrat
     - family: MontserratR
       fonts:
