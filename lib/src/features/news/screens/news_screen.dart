@@ -20,7 +20,7 @@ class NewsScreen extends StatelessWidget {
             BlendMode.color,
           ),
           child: ImageFiltered(
-            imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+            imageFilter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
             child: Image.asset('assets/bg/news_bg.png'),
           ),
         ),

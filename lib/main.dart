@@ -8,6 +8,7 @@ import 'src/core/config/themes.dart';
 import 'src/core/others/http/bloc/http_bloc.dart';
 import 'src/core/others/internet/bloc/internet_bloc.dart';
 import 'src/features/home/bloc/home_bloc.dart';
+import 'src/features/matches/bloc/match_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => MatchBloc()..add(GetMatchesEvent())),
         BlocProvider(create: (context) => InternetBloc()..add(CheckInternet())),
         BlocProvider(create: (context) => HttpBloc()),
       ],

@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/screens/home_screen.dart';
+import '../../features/matches/screens/match_detail_screen.dart';
 import '../../features/news/screens/news_detail_screen.dart';
 import '../../features/quiz/screens/quiz_play_screen.dart';
 import '../../features/splash/onboard_screen.dart';
@@ -30,6 +31,12 @@ final routerConfig = GoRouter(
       path: '/news',
       builder: (context, state) => NewsDetailScreen(
         news: state.extra as News,
+      ),
+    ),
+    GoRoute(
+      path: '/match',
+      builder: (context, state) => MatchDetailScreen(
+        id: state.extra as int,
       ),
     ),
   ],

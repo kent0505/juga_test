@@ -79,6 +79,8 @@ void precacheImages(BuildContext context) {
   List<String> imageAssets = [
     'assets/onboard/onboard.png',
     'assets/bg/news_bg.png',
+    'assets/bg/match_bg.png',
+    'assets/bg/match_detail_bg.png',
   ];
   try {
     for (String assets in imageAssets) {
