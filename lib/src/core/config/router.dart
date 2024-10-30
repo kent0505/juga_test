@@ -6,6 +6,7 @@ import '../../features/news/screens/news_detail_screen.dart';
 import '../../features/quiz/screens/quiz_play_screen.dart';
 import '../../features/splash/onboard_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../models/match_model.dart';
 import '../models/news.dart';
 
 final routerConfig = GoRouter(
@@ -36,7 +37,7 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/match',
       builder: (context, state) => MatchDetailScreen(
-        id: state.extra as int,
+        match: state.extra as MatchModel,
       ),
     ),
   ],

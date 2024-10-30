@@ -2,28 +2,43 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/config/app_colors.dart';
+import '../../../core/models/match_model.dart';
 import '../../../core/others/loading_widget.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/arrow_back_button.dart';
 import '../../../core/widgets/custom_scaffold.dart';
-import '../bloc/match_bloc.dart';
-import '../widgets/match_error.dart';
+import '../../../core/widgets/texts/text_r.dart';
+import '../blocs/statistics/statistics_bloc.dart';
+import '../widgets/failure_widget.dart';
 
 class MatchDetailScreen extends StatefulWidget {
   const MatchDetailScreen({
     super.key,
-    required this.id,
+    required this.match,
   });
 
-  final int id;
+  final MatchModel match;
 
   @override
   State<MatchDetailScreen> createState() => _MatchDetailScreenState();
 }
 
 class _MatchDetailScreenState extends State<MatchDetailScreen> {
+  void onAgain() {
+    context.read<StatisticsBloc>().add(GetStatisticsEvent(id: widget.match.id));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    logger(widget.match.id);
+    context.read<StatisticsBloc>().add(GetStatisticsEvent(id: widget.match.id));
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -62,48 +77,129 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
               ),
             ),
           ),
-          BlocListener<MatchBloc, MatchState>(
-            listener: (context, state) {
+          BlocBuilder<StatisticsBloc, StatisticsState>(
+            builder: (context, state) {
               logger(state);
-            },
-            child: BlocBuilder<MatchBloc, MatchState>(
-              builder: (context, state) {
-                if (state is MatchLoadingState) return const LoadingWidget();
 
-                if (state is MatchErrorState) return const MatchError();
+              if (state is StatisticsLoading) return const LoadingWidget();
 
-                if (state is MatchesLoadedState) {
-                  return ListView(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 22,
-                      vertical: 172 + getStatusBar(context),
-                    ),
-                    children: const [
-                      // const Center(
-                      //   child: Text(
-                      //     'Matches',
-                      //     style: TextStyle(
-                      //       color: AppColors.green,
-                      //       fontSize: 55,
-                      //       fontFamily: Fonts.montserratM,
-                      //       fontStyle: FontStyle.italic,
-                      //     ),
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 26),
-                      // ...List.generate(
-                      //   state.matches.length,
-                      //   (index) {
-                      //     return MatchCard(match: state.matches[index]);
-                      //   },
-                      // ),
+              if (state is StatisticsFailed) {
+                return FailureWidget(onPressed: onAgain);
+              }
+
+              if (state is StatisticsLoaded) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 60),
+                      Center(
+                        child: TextM(
+                          widget.match.stadium,
+                          fontSize: 14,
+                          fontFamily: Fonts.montserratM,
+                          color: AppColors.green,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 80,
+                            child: Column(
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: widget.match.logo1,
+                                  height: 72,
+                                ),
+                                const SizedBox(height: 10),
+                                TextM(
+                                  widget.match.title1,
+                                  fontSize: 12,
+                                  fontFamily: Fonts.montserratM,
+                                  color: AppColors.green,
+                                  maxLines: 2,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                TextB(
+                                  '${widget.match.goals1} : ${widget.match.goals2}',
+                                  fontSize: 63,
+                                  fontFamily: Fonts.heavy,
+                                  color: AppColors.green,
+                                ),
+                                const SizedBox(height: 25),
+                                Container(
+                                  height: 18,
+                                  width: 132,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: AppColors.white,
+                                  ),
+                                  child: const Center(
+                                    child: TextB(
+                                      'Game stats',
+                                      fontSize: 13,
+                                      fontFamily: Fonts.heavy,
+                                      color: AppColors.green,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          SizedBox(
+                            width: 80,
+                            child: Column(
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: widget.match.logo2,
+                                  height: 72,
+                                ),
+                                const SizedBox(height: 10),
+                                TextM(
+                                  widget.match.title2,
+                                  fontSize: 12,
+                                  fontFamily: Fonts.montserratM,
+                                  color: AppColors.green,
+                                  maxLines: 2,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 40),
+                      SizedBox(
+                        width: 290,
+                        height: 90,
+                        child: Stack(
+                          children: [
+                            SvgPicture.asset('assets/stadium.svg'),
+                            Positioned(
+                              top: 20,
+                              right: 90,
+                              child: SvgPicture.asset('assets/ball.svg'),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
-                  );
-                }
+                  ),
+                );
+              }
 
-                return Container();
-              },
-            ),
+              return Container();
+            },
           ),
           Positioned(
             top: getStatusBar(context),

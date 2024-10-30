@@ -30,7 +30,7 @@ class MatchCard extends StatelessWidget {
       ),
       child: CuperButton(
         onPressed: () {
-          context.push('/match', extra: match.id);
+          context.push('/match', extra: match);
         },
         child: Row(
           children: [

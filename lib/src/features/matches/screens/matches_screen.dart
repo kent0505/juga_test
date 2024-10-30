@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/config/app_colors.dart';
 import '../../../core/others/loading_widget.dart';
 import '../../../core/utils.dart';
-import '../bloc/match_bloc.dart';
+import '../blocs/match/match_bloc.dart';
 import '../widgets/match_card.dart';
-import '../widgets/match_error.dart';
+import '../widgets/failure_widget.dart';
 
 class MatchesScreen extends StatelessWidget {
   const MatchesScreen({super.key});
@@ -50,48 +50,51 @@ class MatchesScreen extends StatelessWidget {
             ),
           ),
         ),
-        BlocListener<MatchBloc, MatchState>(
-          listener: (context, state) {
+        BlocBuilder<MatchBloc, MatchState>(
+          builder: (context, state) {
             logger(state);
-          },
-          child: BlocBuilder<MatchBloc, MatchState>(
-            builder: (context, state) {
-              if (state is MatchLoadingState) return const LoadingWidget();
 
-              if (state is MatchErrorState) return const MatchError();
+            if (state is MatchLoading) return const LoadingWidget();
 
-              if (state is MatchesLoadedState) {
-                return ListView(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 22,
-                    vertical: 172 + getStatusBar(context),
-                  ),
-                  children: [
-                    const Center(
-                      child: Text(
-                        'Matches',
-                        style: TextStyle(
-                          color: AppColors.green,
-                          fontSize: 55,
-                          fontFamily: Fonts.montserratM,
-                          fontStyle: FontStyle.italic,
-                        ),
+            if (state is MatchFailed) {
+              return FailureWidget(
+                onPressed: () {
+                  context.read<MatchBloc>().add(GetMatchesEvent());
+                },
+              );
+            }
+
+            if (state is MatchesLoaded) {
+              return ListView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 172 + getStatusBar(context),
+                ),
+                children: [
+                  const Center(
+                    child: Text(
+                      'Matches',
+                      style: TextStyle(
+                        color: AppColors.green,
+                        fontSize: 55,
+                        fontFamily: Fonts.montserratM,
+                        fontStyle: FontStyle.italic,
                       ),
                     ),
-                    const SizedBox(height: 26),
-                    ...List.generate(
-                      state.matches.length,
-                      (index) {
-                        return MatchCard(match: state.matches[index]);
-                      },
-                    ),
-                  ],
-                );
-              }
+                  ),
+                  const SizedBox(height: 26),
+                  ...List.generate(
+                    state.matches.length,
+                    (index) {
+                      return MatchCard(match: state.matches[index]);
+                    },
+                  ),
+                ],
+              );
+            }
 
-              return Container();
-            },
-          ),
+            return Container();
+          },
         ),
       ],
     );
