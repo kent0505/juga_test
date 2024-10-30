@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../core/models/quiz.dart';
 import '../../../core/utils.dart';
-import '../../../core/widgets/buttons/cuper_button.dart';
+import '../../../core/widgets/buttons/arrow_back_button.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../widgets/correct_answers_dialog.dart';
@@ -73,18 +71,7 @@ class _QuizPlayScreenState extends State<QuizPlayScreen> {
       body: Column(
         children: [
           SizedBox(height: getStatusBar(context)),
-          Row(
-            children: [
-              const SizedBox(width: 10),
-              CuperButton(
-                onPressed: () {
-                  context.pop();
-                },
-                minSize: 50,
-                child: SvgPicture.asset('assets/back.svg'),
-              ),
-            ],
-          ),
+          const ArrowBackButton(),
           const Spacer(),
           QuizImage(quiz: quizesList[index]),
           const Spacer(),

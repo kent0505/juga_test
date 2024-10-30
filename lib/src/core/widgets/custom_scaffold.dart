@@ -19,6 +19,7 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: AppColors.main,
       body: Stack(
         children: [
           Container(
