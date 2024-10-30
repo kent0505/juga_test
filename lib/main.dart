@@ -43,6 +43,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// news
-// ios testing
