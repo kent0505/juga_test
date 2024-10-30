@@ -57,7 +57,7 @@ class NewsDetailScreen extends StatelessWidget {
           ListView(
             padding: const EdgeInsets.symmetric(
               horizontal: 24,
-              vertical: 86,
+              vertical: 120,
             ),
             children: [
               _Image(news),
