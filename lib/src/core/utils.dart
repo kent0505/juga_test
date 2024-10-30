@@ -78,26 +78,7 @@ void logger(Object message) {
 void precacheImages(BuildContext context) {
   List<String> imageAssets = [
     'assets/onboard/onboard.png',
-    'assets/quiz/quiz1.png',
-    'assets/quiz/quiz2.png',
-    'assets/quiz/quiz3.png',
-    'assets/quiz/quiz4.png',
-    'assets/quiz/quiz5.png',
-    'assets/quiz/quiz6.png',
-    'assets/quiz/quiz7.png',
-    'assets/quiz/quiz8.png',
-    'assets/quiz/quiz9.png',
-    'assets/quiz/quiz10.png',
-    'assets/quiz/quiz11.png',
-    'assets/quiz/quiz12.png',
-    'assets/quiz/quiz13.png',
-    'assets/quiz/quiz14.png',
-    'assets/quiz/quiz15.png',
-    'assets/quiz/quiz16.png',
-    'assets/quiz/quiz17.png',
-    'assets/quiz/quiz18.png',
-    'assets/quiz/quiz19.png',
-    'assets/quiz/quiz20.png',
+    'assets/bg/news_bg.png',
   ];
   try {
     for (String assets in imageAssets) {
