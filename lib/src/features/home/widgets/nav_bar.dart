@@ -15,7 +15,7 @@ class NavBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 62,
+        height: 66,
         color: AppColors.green,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -88,7 +88,7 @@ class _NavBarButton extends StatelessWidget {
         width: 62,
         child: Column(
           children: [
-            const SizedBox(height: 6),
+            const SizedBox(height: 4),
             SizedBox(
               height: 29,
               child: SvgPicture.asset(
@@ -96,14 +96,16 @@ class _NavBarButton extends StatelessWidget {
                 color: active ? AppColors.main : AppColors.white,
               ),
             ),
-            const Spacer(),
+            // const Spacer(),
+            // const SizedBox(height: 10),
             TextM(
               title,
               fontSize: 11,
               fontFamily: Fonts.montserratM,
               color: active ? AppColors.main : AppColors.white,
             ),
-            const SizedBox(height: 10),
+            // const Spacer()
+            // const SizedBox(height: 10),
           ],
         ),
       ),
