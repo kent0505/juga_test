@@ -10,6 +10,7 @@ import 'src/core/others/internet/bloc/internet_bloc.dart';
 import 'src/features/home/bloc/home_bloc.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -39,7 +40,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// quiz
 // news
 // matches
 // ios testing

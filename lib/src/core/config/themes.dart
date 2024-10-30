@@ -5,20 +5,12 @@ import 'app_colors.dart';
 
 final theme = ThemeData(
   useMaterial3: false,
-  primarySwatch: Colors.grey,
+  primarySwatch: Colors.green,
   fontFamily: Fonts.regular,
-  textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: AppColors.main,
-    selectionColor: AppColors.main,
-    selectionHandleColor: AppColors.main,
-  ),
-  colorScheme: ColorScheme.fromSwatch(
-    accentColor: AppColors.main, // overscroll indicator color
-  ),
+  colorScheme: ColorScheme.fromSwatch(accentColor: AppColors.main),
   dialogTheme: const DialogTheme(
-    // insetPadding: EdgeInsets.symmetric(horizontal: 20),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(24)),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
   ),
 );
