@@ -16,7 +16,6 @@ class MatchBloc extends Bloc<MatchEvent, MatchState> {
     on<MatchEvent>(
       (event, emit) => switch (event) {
         GetMatchesEvent() => _getMatches(event, emit),
-        // GetStatisticsEvent() => _getStatistics(event, emit),
       },
     );
   }

@@ -30,7 +30,11 @@ class NewsDetailScreen extends StatelessWidget {
             ),
             child: ImageFiltered(
               imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-              child: Image.asset('assets/bg/news_bg.png'),
+              child: Image.asset(
+                'assets/bg/news_bg.png',
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Positioned(
@@ -44,6 +48,7 @@ class NewsDetailScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
+                    AppColors.main.withOpacity(0),
                     AppColors.main.withOpacity(0.3),
                     AppColors.main.withOpacity(0.5),
                     AppColors.main.withOpacity(0.9),
@@ -96,7 +101,7 @@ class _Image extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 216,
+      height: getWidth(context) > 600 ? 500 : 216,
       padding: const EdgeInsets.symmetric(horizontal: 28),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -111,7 +116,8 @@ class _Image extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           child: CachedNetworkImage(
             imageUrl: news.image,
-            height: 182,
+            height: getWidth(context) > 600 ? 460 : 182,
+            width: double.infinity,
             fit: BoxFit.cover,
           ),
         ),

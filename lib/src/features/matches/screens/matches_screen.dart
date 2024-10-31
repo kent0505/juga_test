@@ -24,7 +24,11 @@ class MatchesScreen extends StatelessWidget {
           ),
           child: ImageFiltered(
             imageFilter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-            child: Image.asset('assets/bg/match_bg.png'),
+            child: Image.asset(
+              'assets/bg/match_bg.png',
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Positioned(

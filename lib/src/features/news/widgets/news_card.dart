@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/models/news.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/cuper_button.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
@@ -18,7 +19,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 292,
+      height: getWidth(context) > 600 ? 500 : 292,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       margin: const EdgeInsets.only(bottom: 45),
       decoration: BoxDecoration(
@@ -40,7 +41,8 @@ class NewsCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               child: CachedNetworkImage(
                 imageUrl: news.image,
-                height: 160,
+                height: getWidth(context) > 600 ? 360 : 160,
+                width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
